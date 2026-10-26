@@ -1,0 +1,43 @@
+¡Es una excelente idea para tu proyecto final! Enfocarlo en tu propio perfil de Steam le da un toque personal y real. Además, tu argumento para los roles de usuario es completamente válido y muy bien justificado para el ámbito de la seguridad de la información.
+Para cumplir con el requisito de las 6 tablas mínimas, una estructura normalizada y adaptada a tu perfil de Steam (incluyendo la lógica de juegos ocultos) sería la siguiente:
+
+Estructura de Tablas Propuesta (6 Tablas)
+
+1. Categorias_Privacidad (Tabla de referencia)
+	• Propósito: Define los niveles de visibilidad (Público, Amigos, Oculto/Privado).
+	• Registros mínimos: No aplica por ser tabla de referencia (ej. 3 registros).
+2. Videojuegos
+	• Propósito: El catálogo completo de los juegos que posees en tu biblioteca.
+	• Registros mínimos: Al menos 15 videojuegos.
+3. Biblioteca_Perfil
+	• Propósito: Conecta tu perfil con los videojuegos, registrando las horas jugadas, la fecha de adquisición y su estado de privacidad.
+	• Registros mínimos: Al menos 15 registros.
+4. Logros
+	• Propósito: Los logros disponibles para los diferentes videojuegos.
+	• Registros mínimos: Al menos 15 logros.
+5. Logros_Desbloqueados
+	• Propósito: Historial de los logros que tú ya has desbloqueado en tus partidas.
+	• Registros mínimos: Al menos 15 registros.
+6. Resenas
+	• Propósito: Las opiniones y calificaciones que has escrito sobre tus juegos.
+	• Registros mínimos: Al menos 15 reseñas (pueden ser textos cortos).
+
+Justificación de Roles y Permisos (Para tu documentación)
+
+Tu idea de ocultar ciertos videojuegos es perfecta para justificar los roles. Aquí tienes la redacción técnica para tu entrega:
+• Rol administrador (Tú): Tiene permisos totales (ALL PRIVILEGES) sobre la base de datos. Justificación: Como dueño del perfil, necesitas insertar nuevos juegos, actualizar las horas de juego, desbloquear logros y, crucialmente, visualizar e interactuar con la sección de videojuegos ocultos.
+• Rol usuario (Tus compañeros): Tiene permisos limitados de lectura (SELECT). Justificación: Los invitados solo deben auditar o ver tu biblioteca pública y tus estadísticas. No tienen permisos para ver los registros donde el nivel de privacidad sea 'Oculto', simulando la capa de privacidad de Steam.
+(Nota: En SQL, la restricción de ocultar filas específicas a un usuario se puede lograr creando una Vista (VIEW) que filtre los juegos ocultos, y dándole permiso al rol usuario solo para ver esa vista en lugar de la tabla completa).
+
+Aplicación de Restricciones y Campos Autogenerados
+
+Para cumplir con el criterio de restricciones distribuidas entre tus tablas, podemos estructurar las columnas clave de esta manera:
+• Campo Autogenerado (SERIAL / IDENTITY / AUTO_INCREMENT): Se aplicará en las llaves primarias de las tablas principales, como id_videojuego o id_resena.
+• NOT NULL: Obligatorio en campos críticos como el título del juego o la fecha de desbloqueo de un logro.
+• UNIQUE: En la tabla Videojuegos, el código de la tienda de Steam (app_id) debe ser único.
+• CHECK: En la tabla Biblioteca_Perfil, un CHECK (horas_jugadas >= 0). En la tabla Resenas, un CHECK (calificacion BETWEEN 1 AND 5).
+Para ayudarte a avanzar con la documentación, te propongo diseñar los siguientes pasos del proyecto.
+¿Cómo te gustaría continuar? Puedo ayudarte a:
+1. Escribir el código SQL de creación de las 6 tablas (DDL) con todas las restricciones requeridas.
+2. Desarrollar las sentencias SQL para crear los roles, los dos usuarios y asignarles sus permisos.
+3. Explicar cómo estructurar el Modelo Relacional en texto para que lo pases a tu diagrama gráfico.

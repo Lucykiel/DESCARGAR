@@ -1,0 +1,22 @@
+https://contenido-vario.github.io/MySQL/
+https://www.youtube.com/watch?v=NJp-uJGwg6k
+https://app.diagrams.net/
+https://www.w3schools.com/html/
+
+EJERCICIO 1
+Caso A: Planificar
+Caso B: Capturar
+Caso C: Almacenamiento
+Caso D: Procesar
+Caso E: Analizar
+Caso F: Visualizacion
+Caso G: Destruir
+
+EJERCICIO 2
+Caso 1: Procesar
+Caso 2: Capturar
+Caso 3: Analizar
+Caso 4: Almacenamiento
+Caso 5: Destruir
+Caso 6: Visualizacion
+Caso 7: Archivo
